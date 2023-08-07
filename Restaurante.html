@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de Jantar</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7ede2;
+      color: #383838;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      color: #e52e1a;
+    }
+
+    label {
+      font-size: 1.2em;
+      color: #e52e1a;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"], input[type="checkbox"], button {
+      font-size: 1em;
+      padding: 5px 10px;
+      border: 2px solid #e52e1a;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #e52e1a;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background-color: #e52e1a;
+      color: #fff;
+    }
+
+    #resultado {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #resultado p {
+      font-size: 1.2em;
+      margin: 5px 0;
+    }
+
+    /* Animação de fadeIn para o resultado */
+    #resultado {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <script>
+    function calcularTotal() {
+      // O código JavaScript permanece inalterado
+      // ...
+    }
+  </script>
+</head>
+<body>
+  <h1>Calculadora de Jantar</h1>
+
+  <label for="valorJantar">Valor do Jantar:</label>
+  <input type="number" id="valorJantar" step="0.01"><br><br>
+
+  <label for="temEntrada">Restaurante possui entrada?</label>
+  <input type="checkbox" id="temEntrada"><br><br>
+
+  <label for="TemSobremesa">Restaurante possui Sobremesa?</label>
+  <input type="checkbox" id="TemSobremesa"><br><br>
+
+  <label for="TemBebida">Restaurante possui Bebida?</label>
+  <input type="checkbox" id="TemBebida"><br><br>
+
+  <button onclick="calcularTotal()">Calcular</button><br><br>
+
+  <div id="resultado">
+    <p id="taxaGarcom"></p>
+    <p id="valorEntrada"></p>
+    <p id="valorSobremesa"></p>
+    <p id="valorBebida"></p>
+    <p id="valorTotal"></p>
+  </div>
+  <script>
+    function calcularTotal() {
+      var valorJantar = parseFloat(document.getElementById("valorJantar").value);
+      var temEntrada = document.getElementById("temEntrada").checked;
+      var TemSobremesa = document.getElementById("TemSobremesa").checked;
+      var TemBebida = document.getElementById("TemBebida").checked;
+
+      var taxaGarcom = valorJantar * 0.2;
+      var valorEntrada = temEntrada ? 300 : 0;
+      var valorSobremesa = TemSobremesa ? 150 : 0;
+      var valorBebida = TemBebida ? 20 : 0;
+      var valorTotal = valorJantar + taxaGarcom + valorEntrada + valorSobremesa + valorBebida;
+
+      document.getElementById("taxaGarcom").innerHTML = "Taxa do garçom: R$ " + taxaGarcom.toFixed(2);
+      document.getElementById("valorEntrada").innerHTML = "Valor da entrada: R$ " + valorEntrada.toFixed(2);
+      document.getElementById("valorSobremesa").innerHTML = "Valor da Sobremesa: R$ " + valorSobremesa.toFixed(2);
+      document.getElementById("valorBebida").innerHTML = "Valor da Bebida: R$ " + valorBebida.toFixed(2);
+      document.getElementById("valorTotal").innerHTML = "Valor total do jantar: R$ " + valorTotal.toFixed(2);
+
+      // Adicionando a animação de fadeIn após o cálculo
+      var resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.style.opacity = 1;
+    }
+  </script>
+</body>
+</html>
